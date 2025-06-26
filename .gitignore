@@ -1,0 +1,51 @@
+# Qt编译生成的文件
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.pdb
+
+# Makefile
+Makefile
+Makefile.*
+
+# Qt项目用户设置文件
+*.pro.user*
+*.qmlproject.user*
+
+# Debug和Release目录
+debug/
+release/
+build/
+Build/
+build-*/
+
+# VS Code
+.vscode/
+
+# 临时文件
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 缓存目录
+.cache/
+
+# Qt生成的MOC文件
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+
+# 备份文件
+*.bak
+*.backup 

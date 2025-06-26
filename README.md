@@ -53,8 +53,9 @@ Hanoi/
    git clone https://github.com/MaJiaxiang05/hanoi-tower-qt.git
    ```
    
-2. 在本地目录里面找到克隆好的hanoi-tower-qt文件
-
+2. 在本地目录里面找到克隆好的hanoi-tower-qt文件，
+   双击`HanoiTower_MultiFile.pro`文件，配置编译环境，即可开始游戏（在已经安装好Qt Creator的情况下）
+   
 3. 使用Qt Creator：
    - 打开`HanoiTower_MultiFile.pro`
    - 配置编译环境（MinGW）

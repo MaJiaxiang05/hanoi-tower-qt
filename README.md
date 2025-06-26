@@ -23,11 +23,14 @@
 Hanoi/
 ├── src/
 │   ├── main_final.cpp         # 主程序入口
-│   ├── gamecontroller.*       # 游戏控制器（核心逻辑）
-│   ├── gamedisplay.*          # 游戏显示组件
+│   ├── gamecontroller.cpp     # 游戏控制器（核心逻辑）
+│   ├── gamecontroller.h       # 游戏控制器（核心逻辑）
+│   ├── gamedisplay.cpp        # 游戏显示组件
+│   ├── gamedisplay.h          # 游戏显示组件
 │   ├── hanoigame.h            # 游戏接口定义
 │   ├── hanoigame_impl.cpp     # 汉诺塔游戏逻辑实现
-│   └── mainwindow_multi.*     # 主窗口界面
+│   ├── mainwindow.cpp         # 主窗口界面
+│   └── mainwindow.h           # 主窗口界面
 ├── forms/
 │   └── mainwindow.ui          # Qt Designer界面文件
 ├── resources/

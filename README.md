@@ -51,16 +51,17 @@ Hanoi/
 1. 克隆项目到本地：
    ```bash
    git clone https://github.com/MaJiaxiang05/hanoi-tower-qt.git
-   cd hanoi-tower-qt
    ```
+   
+2. 在本地目录里面找到克隆好的hanoi-tower-qt文件
 
-2. 使用Qt Creator：
+3. 使用Qt Creator：
    - 打开`HanoiTower_MultiFile.pro`
    - 配置编译环境（MinGW）
    - 点击构建按钮编译项目
    - 运行程序
 
-3. 命令行编译：
+4. 命令行编译：
    ```bash
    qmake HanoiTower_MultiFile.pro
    make

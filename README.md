@@ -54,7 +54,7 @@ Hanoi/
    ```
    
 2. 在本地目录里面找到克隆好的hanoi-tower-qt文件，双击`HanoiTower_MultiFile.pro`
-   文件，配置编译环境，即可开始游戏（在已经安装好Qt Creator和git的情况下）
+   文件，配置编译环境，即可开始游戏（在已经安装好Qt Creator的情况下）
    
 3. 使用Qt Creator：
    - 打开`HanoiTower_MultiFile.pro`
@@ -123,4 +123,4 @@ Hanoi/
 
 ##  许可证
 
-本项目仅供学习交流使用。 
+本项目仅供学习交流使用。

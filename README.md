@@ -57,13 +57,13 @@ Hanoi/
 2. 在本地目录里面找到克隆好的hanoi-tower-qt文件，双击`HanoiTower.pro`
    文件，配置编译环境，即可开始游戏（在已经安装好Qt Creator的情况下）
    
-3. 使用Qt Creator：
+3. 或使用Qt Creator：
    - 打开`HanoiTower.pro`
    - 配置编译环境（MinGW）
    - 点击构建按钮编译项目
    - 运行程序
 
-4. 命令行编译：
+4. 或命令行编译：
    ```bash
    qmake HanoiTower.pro
    make

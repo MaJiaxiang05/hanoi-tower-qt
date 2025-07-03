@@ -1,4 +1,4 @@
-# 汉诺塔（Tower of Hanoi）- 多文件版本
+# 汉诺塔（Tower of Hanoi）
 
 一个用Qt5开发的汉诺塔游戏，支持可视化演示和手动操作。
 

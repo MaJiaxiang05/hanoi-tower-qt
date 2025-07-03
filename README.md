@@ -22,7 +22,7 @@
 ```
 Hanoi/
 ├── src/
-│   ├── main_final.cpp         # 主程序入口
+│   ├── main.cpp         # 主程序入口
 │   ├── gamecontroller.cpp     # 游戏控制器（核心逻辑）
 │   ├── gamecontroller.h       # 游戏控制器（核心逻辑）
 │   ├── gamedisplay.cpp        # 游戏显示组件
@@ -125,3 +125,12 @@ Hanoi/
 ##  许可证
 
 本项目仅供学习交流使用。
+
+##  联系信息
+
+如有问题或建议，请通过GitHub项目页面提交Issue。
+也可通过电子邮箱与我们联系
+1732650757@qq.com
+2446594219@qq.com
+
+

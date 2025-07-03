@@ -28,18 +28,18 @@ src/
 ├── gamecontroller.cpp/.h  游戏控制器（核心逻辑）
 ├── gamedisplay.cpp/.h     游戏显示组件
 ├── hanoigame.h           游戏接口定义
-├── hanoigame_impl.cpp    汉诺塔游戏逻辑实现
-└── mainwindow_multi.cpp/.h 主窗口界面
+├── hanoigame.cpp    汉诺塔游戏逻辑实现
+└── mainwindow.cpp/.h 主窗口界面
 
 forms/mainwindow.ui        Qt Designer界面文件
 resources/resources.qrc    资源文件
-HanoiTower_MultiFile.pro   Qt项目文件
+HanoiTower.pro   Qt项目文件
 
 编译步骤
 --------
 方法1：使用Qt Creator
 1. 启动Qt Creator
-2. 打开项目文件：HanoiTower_MultiFile.pro
+2. 打开项目文件：HanoiTower.pro
 3. 配置编译环境（选择MinGW套件）
 4. 点击"构建"按钮编译项目
 5. 点击"运行"按钮启动程序
@@ -47,7 +47,7 @@ HanoiTower_MultiFile.pro   Qt项目文件
 方法2：命令行编译
 1. 打开Qt命令提示符
 2. 进入项目目录
-3. 执行：qmake HanoiTower_MultiFile.pro
+3. 执行：qmake HanoiTower.pro
 4. 执行：make
 5. 运行生成的可执行文件
 

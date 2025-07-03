@@ -1,4 +1,4 @@
-#include "mainwindow_multi.h"
+#include "mainwindow.h"
 #include "hanoigame.h"
 #include "gamedisplay.h"
 #include "gamecontroller.h"

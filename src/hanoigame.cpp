@@ -113,3 +113,4 @@ void HanoiGame::solveHanoi(int n, int from, int to, int aux, QList<QPair<int, in
         solveHanoi(n - 1, aux, to, from, solution);
     }
 } 
+ 

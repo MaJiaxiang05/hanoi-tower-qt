@@ -3,21 +3,21 @@ QT += core gui widgets
 CONFIG += c++11
 CONFIG += debug
 
-TARGET = HanoiTower_MultiFile
+TARGET = HanoiTower
 TEMPLATE = app
 
 SOURCES += \
-    src/main_final.cpp \
-    src/hanoigame_impl.cpp \
+    src/main.cpp \
+    src/hanoigame.cpp \
     src/gamedisplay.cpp \
     src/gamecontroller.cpp \
-    src/mainwindow_multi.cpp
+    src/mainwindow.cpp
 
 HEADERS += \
     src/hanoigame.h \
     src/gamedisplay.h \
     src/gamecontroller.h \
-    src/mainwindow_multi.h
+    src/mainwindow.h
 
 FORMS += \
     forms/mainwindow.ui

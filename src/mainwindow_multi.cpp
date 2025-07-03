@@ -30,8 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
     m_controller->setGame(m_game);
     m_controller->setDisplay(m_display);
     
-    qDebug() << "DEBUG: Components created and connected";
-    
     // 初始化游戏
     m_game->initializeGame(3);
     
@@ -42,10 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
     setupConnections();
     
     // 初始更新
-    qDebug() << "DEBUG: Performing initial UI updates...";
     updateControlButtons();
     updateGameInfo();
-    qDebug() << "DEBUG: Initial setup completed";
     
     setWindowTitle("汉诺塔游戏");
     resize(1000, 700);
@@ -251,20 +247,18 @@ void MainWindow::setupConnections()
     connect(m_controller, SIGNAL(demoProgressUpdated(int,int)), this, SLOT(onDemoProgressUpdated(int,int)));
     
     // 连接游戏状态变化信号
-    qDebug() << "DEBUG: Connecting game signals...";
-    bool result1 = connect(m_game, SIGNAL(moveExecuted(int,int,int)), this, SLOT(updateGameInfo()));
-    bool result2 = connect(m_controller, SIGNAL(gameReset()), this, SLOT(updateGameInfo()));
+    connect(m_game, &HanoiGame::moveExecuted, this, &MainWindow::updateGameInfo);
+    connect(m_controller, &GameController::gameReset, this, &MainWindow::updateGameInfo);
     // 确保每次演示步骤后也更新游戏信息
-    bool result3 = connect(m_controller, SIGNAL(demoProgressUpdated(int,int)), this, SLOT(updateGameInfo()));
+    connect(m_controller, QOverload<int,int>::of(&GameController::demoProgressUpdated), 
+            this, &MainWindow::updateGameInfo);
     // 额外连接：确保每次移动都能看到调试信息
-    bool result4 = connect(m_game, SIGNAL(moveExecuted(int,int,int)), this, SLOT(onMoveExecutedDebug(int,int,int)));
-    qDebug() << "DEBUG: Game signal connections:" << result1 << result2 << result3 << result4;
+    connect(m_game, &HanoiGame::moveExecuted, this, &MainWindow::onMoveExecutedDebug);
 }
 
 // 槽函数实现
 void MainWindow::onStartDemo()
 {
-    qDebug() << "DEBUG: onStartDemo() called";
     m_controller->startDemo();
     updateControlButtons();
     updateGameInfo();
@@ -272,7 +266,6 @@ void MainWindow::onStartDemo()
 
 void MainWindow::onStopDemo()
 {
-    qDebug() << "DEBUG: onStopDemo() called";
     m_controller->stopDemo();
     m_progressBar->setValue(0);  // 清空进度条
     updateControlButtons();
@@ -281,7 +274,6 @@ void MainWindow::onStopDemo()
 
 void MainWindow::onPauseDemo()
 {
-    qDebug() << "DEBUG: onPauseDemo() called";
     m_controller->pauseDemo();
     updateControlButtons();
     updateGameInfo();  // 确保状态信息正确
@@ -309,28 +301,19 @@ void MainWindow::onSpeedChanged(int speed)
 
 void MainWindow::onTowerAClicked()
 {
-    qDebug() << "DEBUG: onTowerAClicked() called";
-    qDebug() << "DEBUG: Before selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     m_controller->selectTower(0);
-    qDebug() << "DEBUG: After selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     updateGameInfo();  // 手动操作后更新游戏信息
 }
 
 void MainWindow::onTowerBClicked()
 {
-    qDebug() << "DEBUG: onTowerBClicked() called";
-    qDebug() << "DEBUG: Before selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     m_controller->selectTower(1);
-    qDebug() << "DEBUG: After selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     updateGameInfo();  // 手动操作后更新游戏信息
 }
 
 void MainWindow::onTowerCClicked()
 {
-    qDebug() << "DEBUG: onTowerCClicked() called";
-    qDebug() << "DEBUG: Before selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     m_controller->selectTower(2);
-    qDebug() << "DEBUG: After selectTower - moveCount:" << (m_game ? m_game->getMoveCount() : -1);
     updateGameInfo();  // 手动操作后更新游戏信息
 }
 
@@ -357,19 +340,19 @@ void MainWindow::onInvalidMove(const QString &message)
 
 void MainWindow::onDemoProgressUpdated(int currentStep, int totalSteps)
 {
-    qDebug() << "DEBUG: onDemoProgressUpdated called - step" << currentStep << "of" << totalSteps;
     if (totalSteps > 0) {
         int progress = (currentStep * 100) / totalSteps;
         m_progressBar->setValue(progress);
-        qDebug() << "DEBUG: Progress bar set to" << progress << "%";
     }
 }
 
 void MainWindow::onMoveExecutedDebug(int from, int to, int diskSize)
 {
-    qDebug() << "DEBUG: MainWindow::onMoveExecutedDebug called - disk" << diskSize << "from" << from << "to" << to;
-    qDebug() << "DEBUG: Current game moveCount:" << (m_game ? m_game->getMoveCount() : -1);
-    // 这个函数主要用于调试，确保信号连接正常工作
+    Q_UNUSED(from)
+    Q_UNUSED(to)
+    Q_UNUSED(diskSize)
+    
+    // 这个函数主要用于调试，确保信号连接正常工作，所以函数虽然传进来了参数，但函数体内没用到，因为删除了Debug
     // 强制更新游戏信息
     updateGameInfo();
 }
@@ -377,7 +360,7 @@ void MainWindow::onMoveExecutedDebug(int from, int to, int diskSize)
 void MainWindow::onAbout()
 {
     QMessageBox::about(this, "关于汉诺塔游戏",
-                      "汉诺塔游戏 v1.0 - 多文件架构版\n\n"
+                      "汉诺塔游戏 v1.0 \n\n"
                       "这是一个经典的递归算法演示程序。\n"
                       "目标是将所有盘子从左边移动到右边，\n"
                       "遵循以下规则：\n"
@@ -409,8 +392,6 @@ void MainWindow::updateControlButtons()
     bool demonstrating = m_controller->isDemonstrating();
     bool paused = m_controller->isPaused();
     
-    qDebug() << "DEBUG: updateControlButtons - demonstrating:" << demonstrating << "paused:" << paused;
-    
     // 开始按钮：只有在不演示时才能点击
     m_startDemoButton->setEnabled(!demonstrating);
     
@@ -430,7 +411,7 @@ void MainWindow::updateControlButtons()
     
     // 设置控件：演示时禁用
     m_diskCountSpinBox->setEnabled(!demonstrating);
-    m_speedSlider->setEnabled(false);  // 速度滑块在演示时也可以调整
+    m_speedSlider->setEnabled(true);  // 速度滑块在演示时也可以调整
     
     // 手动操作按钮：演示时禁用
     m_towerAButton->setEnabled(!demonstrating);
@@ -440,26 +421,18 @@ void MainWindow::updateControlButtons()
 
 void MainWindow::updateGameInfo()
 {
-    qDebug() << "DEBUG: updateGameInfo() called from" << QThread::currentThread();
-    
     if (!m_game) {
-        qDebug() << "DEBUG: updateGameInfo called but m_game is null";
         return;
     }
     
     int moveCount = m_game->getMoveCount();
     int optimalMoves = m_game->getOptimalMoves();
     
-    qDebug() << "DEBUG: updateGameInfo - moveCount:" << moveCount << "optimalMoves:" << optimalMoves;
-    qDebug() << "DEBUG: Current label text:" << m_moveCountLabel->text();
-    
     QString newMoveText = QString("移动步数: %1").arg(moveCount);
     QString newOptimalText = QString("最优步数: %1").arg(optimalMoves);
     
     m_moveCountLabel->setText(newMoveText);
     m_optimalMovesLabel->setText(newOptimalText);
-    
-    qDebug() << "DEBUG: Updated label text to:" << newMoveText;
 }
 
 void MainWindow::showGameWonDialog()

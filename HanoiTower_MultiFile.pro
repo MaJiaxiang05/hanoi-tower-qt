@@ -19,5 +19,11 @@ HEADERS += \
     src/gamecontroller.h \
     src/mainwindow_multi.h
 
+FORMS += \
+    forms/mainwindow.ui
+
+RESOURCES += \
+    resources/resources.qrc
+
 # Include directories
 INCLUDEPATH += src 

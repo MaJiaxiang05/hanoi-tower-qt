@@ -55,7 +55,6 @@ bool HanoiGame::moveDisk(int from, int to)
     m_towers[to].append(disk);
     m_moveCount++;
     
-    qDebug() << "DEBUG: moveDisk - emitting moveExecuted signal, moveCount:" << m_moveCount;
     emit moveExecuted(from, to, disk);
     
     // 检查是否获胜

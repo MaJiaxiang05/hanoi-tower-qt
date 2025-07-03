@@ -21,7 +21,7 @@ GameController::~GameController()
 {
 }
 
-void GameController::setGame(HanoiGame* game)
+void GameController::setGame(HanoiGame* game)//设置游戏，连接HanoiGame::与GameController::
 {
     m_game = game;
     if (m_game) {
@@ -36,7 +36,7 @@ void GameController::setDisplay(GameDisplay* display)
     m_display = display;
 }
 
-void GameController::startDemo()
+void GameController::startDemo()// 开始演示
 {
     if (!m_game) {
         return;
@@ -72,7 +72,7 @@ void GameController::startDemo()
     emit logMessage(QString("开始演示，共%1步").arg(m_solution.size()));
 }
 
-void GameController::stopDemo()
+void GameController::stopDemo()// 停止演示
 {
     if (m_demoTimer) {
         m_demoTimer->stop();
@@ -85,7 +85,7 @@ void GameController::stopDemo()
     emit logMessage("停止演示");
 }
 
-void GameController::pauseDemo()
+void GameController::pauseDemo()// 暂停演示
 {
     if (!m_isDemonstrating) return;
     
@@ -96,7 +96,7 @@ void GameController::pauseDemo()
         emit logMessage("暂停演示");
     } else {
         // 当前已暂停，恢复运行
-        int interval = 2000 - (m_demoSpeed - 1) * 200;
+        int interval = 2000  - (m_demoSpeed - 1) * 200;
         if (interval < 100) interval = 100;
         m_demoTimer->start(interval);
         emit demoResumed();

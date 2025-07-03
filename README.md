@@ -28,14 +28,14 @@ Hanoi/
 │   ├── gamedisplay.cpp        # 游戏显示组件
 │   ├── gamedisplay.h          # 游戏显示组件
 │   ├── hanoigame.h            # 游戏接口定义
-│   ├── hanoigame_impl.cpp     # 汉诺塔游戏逻辑实现
+│   ├── hanoigame.cpp     # 汉诺塔游戏逻辑实现
 │   ├── mainwindow.cpp         # 主窗口界面
 │   └── mainwindow.h           # 主窗口界面
 ├── forms/
 │   └── mainwindow.ui          # Qt Designer界面文件
 ├── resources/
 │   └── resources.qrc          # 资源文件
-├── HanoiTower_MultiFile.pro   # Qt项目文件
+├── HanoiTower.pro   # Qt项目文件
 ├── README.md                  # 项目说明
 └── .gitignore                 # Git忽略文件
 ```
@@ -46,6 +46,7 @@ Hanoi/
 - Qt 5.12 或更高版本
 - MinGW编译器
 - Windows 10+
+- 文件所在路径一定为纯英文！！！
 
 ### 编译步骤
 1. 克隆项目到本地：
@@ -53,18 +54,18 @@ Hanoi/
    git clone https://github.com/MaJiaxiang05/hanoi-tower-qt.git
    ```
    
-2. 在本地目录里面找到克隆好的hanoi-tower-qt文件，双击`HanoiTower_MultiFile.pro`
+2. 在本地目录里面找到克隆好的hanoi-tower-qt文件，双击`HanoiTower.pro`
    文件，配置编译环境，即可开始游戏（在已经安装好Qt Creator的情况下）
    
 3. 使用Qt Creator：
-   - 打开`HanoiTower_MultiFile.pro`
+   - 打开`HanoiTower.pro`
    - 配置编译环境（MinGW）
    - 点击构建按钮编译项目
    - 运行程序
 
 4. 命令行编译：
    ```bash
-   qmake HanoiTower_MultiFile.pro
+   qmake HanoiTower.pro
    make
    ```
 

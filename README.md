@@ -22,13 +22,13 @@
 ```
 Hanoi/
 ├── src/
-│   ├── main.cpp         # 主程序入口
+│   ├── main.cpp               # 主程序入口
 │   ├── gamecontroller.cpp     # 游戏控制器（核心逻辑）
 │   ├── gamecontroller.h       # 游戏控制器（核心逻辑）
 │   ├── gamedisplay.cpp        # 游戏显示组件
 │   ├── gamedisplay.h          # 游戏显示组件
 │   ├── hanoigame.h            # 游戏接口定义
-│   ├── hanoigame.cpp     # 汉诺塔游戏逻辑实现
+│   ├── hanoigame.cpp          # 汉诺塔游戏逻辑实现
 │   ├── mainwindow.cpp         # 主窗口界面
 │   └── mainwindow.h           # 主窗口界面
 ├── forms/
@@ -114,10 +114,6 @@ Hanoi/
 - **控制层**：GameController协调各组件
 - **界面层**：MainWindow提供用户界面
 
-##  许可证
-
-本项目仅供学习交流使用。
-
 ##  联系信息
 
 如有问题或建议，请通过GitHub项目页面提交Issue。
@@ -128,7 +124,7 @@ Hanoi/
 ##  更新信息
 
 - 最新版本：1.0版本
-- 最后更新时间：2025年7月3日
+- 最后更新时间：2025年7月4日
 
 ##  问题反馈
 
